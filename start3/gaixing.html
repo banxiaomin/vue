@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <p>firstName:{{firstName}}</p>
+        <p>lastName:{{lastName}}</p>
+        <p>全名是:{{fullName}}</p>
+        <button @click="changeName">改姓</button>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                firstName: '王',
+                lastName: '花花',
+                fullName: '王花花'
+            },
+            methods: {
+                changeName: function () {
+                    this.fullName = '梨花花'
+                }
+            },
+            watch: {
+                fullName: function (val) {
+                    var name = val;
+                    this.firstName = name.slice(0,1);
+                    this.lastName = name.slice(1)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
